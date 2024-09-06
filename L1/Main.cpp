@@ -1,5 +1,11 @@
+// From ECE 150
+//     Fundamentals of programming
+//  See
+// ece.uwaterloo.ca/~ece150/Lecture_materials
+// To execute this program, select
+// the button with the text
+// 'Run' and the Play arrow.
 #include <iostream>
-// #include <math>
 
 // Function declarations
 int main();
@@ -7,34 +13,20 @@ int main();
 // Function definitions
 int main()
 {
+    // You can change what is printed
+    // to the screen by changing what
+    // appears between the first
+    // (opening) doublequote (")
+    // and the second (closing)
+    // doublequote.
+    //  - Note: you can include any
+    //    character that appears on
+    //    a standard keyboard with
+    //    the exception of another
+    //    doublequote (") and a
+    //    backslash (\)
+    std::cout << "Hello World!"
+              << std::endl;
 
-    // Lesson 1.01
-    // Display this text to the console
-    std::cout << "Hello World!"; // cout: console out
-    std::cout << std::endl;      // endl: end line
-
-    // ----------------------------------------------------
-
-    // Lesson 1.02
-    int course{150}; // a var named course
-    std::cout << "Hello ECE " << course << " meow" << std::endl;
-
-    // declares an int function gcd with 2 int parameters, m and n
-    int gcd(int m, int n);
-
-    // ----------------------------------------------------
-
-    // Lesson 1.03
-    std::cout << "The answer to the ultimate question is ";
-    std::cout << 42;
-    std::cout << std::endl;
-
-    std::cout << 'a';
-    std::cout << 'b';
-    std::cout << 'c';
-    std::cout << std::endl;
-
-    std::cout << "\' \\"; // escape sequence
-
-    return 0; // to end program
+    return 0;
 }
