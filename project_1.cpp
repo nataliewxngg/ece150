@@ -25,6 +25,7 @@ double input_your_grade(string s, double max)
               std::cout << "Enter your " << s << " grade: ";
               std::cin >> g;
        } while (!(g >= 0 && g <= max));
+       return g;
 }
 
 int main();
