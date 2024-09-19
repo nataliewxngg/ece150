@@ -2,7 +2,30 @@
 
 #include <iostream>
 #include <cmath>
+#include <string>
+using namespace std;
 // NO ARRAYS
+
+double input_max_grade(string s)
+{
+       double max;
+       do
+       {
+              std::cout << "Enter the maximum " + s + " grade: ";
+              std::cin >> max;
+       } while (max <= 0 || max != std::round(max));
+       return max;
+}
+
+double input_your_grade(string s, double max)
+{
+       double g;
+       do
+       {
+              std::cout << "Enter your " << s << " grade: ";
+              std::cin >> g;
+       } while (!(g >= 0 && g <= max));
+}
 
 int main();
 
@@ -14,97 +37,20 @@ int main()
 
        // Input maximum grade and grade
        // max (>0), then achieved (0<grade<=max)
-
-       // Exam
-       do
-       {
-              std::cout << "Enter the maximum final examination grade: ";
-              std::cin >> f_max;
-       } while (f_max <= 0 || f_max != std::round(f_max));
-
-       do
-       {
-              std::cout << "Enter your final examination grade: ";
-              std::cin >> f_achieved;
-       } while (!(f_achieved >= 0 && f_achieved <= f_max));
-
-       // Midterms
-       do
-       {
-              std::cout << "Enter the maximum mid-term examination grade: ";
-              std::cin >> m_max;
-       } while (m_max <= 0 || m_max != std::round(m_max));
-
-       do
-       {
-              std::cout << "Enter your mid-term examination grade: ";
-              std::cin >> m_achieved;
-       } while (!(m_achieved >= 0 && m_achieved <= m_max));
-
-       // P1
-       do
-       {
-              std::cout << "Enter the maximum project 1 grade: ";
-              std::cin >> p1_max;
-       } while (p1_max <= 0 || p1_max != std::round(p1_max));
-
-       do
-       {
-              std::cout << "Enter your project 1 grade: ";
-              std::cin >> p1_achieved;
-       } while (!(p1_achieved >= 0 && p1_achieved <= p1_max));
-
-       // P2
-       do
-       {
-              std::cout << "Enter the maximum project 2 grade: ";
-              std::cin >> p2_max;
-       } while (p2_max <= 0 || p2_max != std::round(p2_max));
-
-       do
-       {
-              std::cout << "Enter your project 2 grade: ";
-              std::cin >> p2_achieved;
-       } while (!(p2_achieved >= 0 && p2_achieved <= p2_max));
-
-       // P3
-       do
-       {
-              std::cout << "Enter the maximum project 3 grade: ";
-              std::cin >> p3_max;
-       } while (p3_max <= 0 || p3_max != std::round(p3_max));
-
-       do
-       {
-              std::cout << "Enter your project 3 grade: ";
-              std::cin >> p3_achieved;
-       } while (!(p3_achieved >= 0 && p3_achieved <= p3_max));
-
-       // P4
-       do
-       {
-              std::cout << "Enter the maximum project 4 grade: ";
-              std::cin >> p4_max;
-       } while (p4_max <= 0 || p4_max != std::round(p4_max));
-
-       do
-       {
-              std::cout << "Enter your project 4 grade: ";
-              std::cin >> p4_achieved;
-       } while (!(p4_achieved >= 0 && p4_achieved <= p4_max));
-
-       // P5
-       do
-       {
-              std::cout << "Enter the maximum project 5 grade: ";
-              std::cin >> p5_max;
-       } while (p5_max <= 0 || p5_max != std::round(p5_max));
-
-       do
-       {
-              std::cout << "Enter your project 5 grade: ";
-              std::cin >> p5_achieved;
-       } while (!(p5_achieved >= 0 && p5_achieved <= p5_max));
+       f_max = input_max_grade("final examination");
+       f_achieved = input_your_grade("final examination", f_max);
+       m_max = input_max_grade("mid-term examination");
+       m_achieved = input_your_grade("mid-term examination", m_max);
+       p1_max = input_max_grade("project 1");
+       p1_achieved = input_your_grade("project 1", p1_max);
+       p2_max = input_max_grade("project 2");
+       p2_achieved = input_your_grade("project 2", p2_max);
+       p3_max = input_max_grade("project 3");
+       p3_achieved = input_your_grade("project 3", p3_max);
+       p4_max = input_max_grade("project 4");
+       p4_achieved = input_your_grade("project 4", p4_max);
+       p5_max = input_max_grade("project 5");
+       p5_achieved = input_your_grade("project 5", p5_max);
 
        // Convert to percentage
        f_100 = 100 * (f_achieved / f_max);
