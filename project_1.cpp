@@ -2,11 +2,9 @@
 
 #include <iostream>
 #include <cmath>
-#include <string>
-using namespace std;
 // NO ARRAYS
 
-double input_max_grade(string s)
+double input_max_grade(std::string s)
 {
        double max;
        do
@@ -17,7 +15,7 @@ double input_max_grade(string s)
        return max;
 }
 
-double input_your_grade(string s, double max)
+double input_your_grade(std::string s, double max)
 {
        double g;
        do
