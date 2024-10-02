@@ -9,30 +9,30 @@ void pattern(unsigned int n)
     else
     {
         std::string space{""};
-        int numOfAsterisks = n * 2 + 1;
+        int num_of_asterisks = n * 2 + 1;
         bool dec = true;
 
         for (int i{0}; i < n * 2 + 1; ++i)
         {
             // output
             std::cout << space;
-            for (int k{0}; k < numOfAsterisks; ++k)
+            for (int k{0}; k < num_of_asterisks; ++k)
             {
                 std::cout << "*";
             }
 
             // setup for next
-            if (numOfAsterisks == 1)
+            if (num_of_asterisks == 1)
                 dec = false;
             if (dec)
             {
                 space += " ";
-                numOfAsterisks -= 2;
+                num_of_asterisks -= 2;
             }
             else
             {
                 space = space.substr(0, space.size() - 1);
-                numOfAsterisks += 2;
+                num_of_asterisks += 2;
             }
 
             std::cout << std::endl;
@@ -77,6 +77,21 @@ unsigned int count(unsigned int n, unsigned int bit)
 
 unsigned int swap_bytes(unsigned int n, unsigned int b0, unsigned int b1)
 {
+    assert((b0 >= 0 && b0 <= 3) && (b1 >= 0 && b1 <= 3));
+
+    if (b0 == b1)
+        return n;
+
+    unsigned int n_dup{n};
+    unsigned int out{0};
+    int byte1[8]{};
+    int byte2[8]{};
+    int byte3[8]{};
+    int byte4[9]{};
+
+    for ()
+
+        return out;
 }
 
 int main()
@@ -84,6 +99,8 @@ int main()
     std::cout << log10(1200) << std::endl; // WORKS
     pattern(3);                            // WORKS
     std::cout << count(4, 0) << std::endl; // WORKS
+
+    swap_bytes(2, 1, 3);
 
     return 0;
 }
