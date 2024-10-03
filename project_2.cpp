@@ -43,15 +43,12 @@ unsigned int log10(unsigned int n)
 {
     assert(n != 0);
 
-    int m{0};
-    unsigned int pow{1};
-
-    while (pow <= n)
+    unsigned int m{0};
+    while (n >= 10)
     {
-        pow *= 10;
+        n /= 10;
         ++m;
     }
-    --m;
 
     return m;
 }
@@ -59,19 +56,18 @@ unsigned int log10(unsigned int n)
 unsigned int count(unsigned int n, unsigned int bit)
 {
     assert(bit == 0 || bit == 1);
-    unsigned int i{0};
+    unsigned int out{0};
 
     while (n)
     {
-        if (bit == 1)
-            i += n & 1;
-        else
-            i += !(n & 1);
-
+        out += n & 1;
         n >>= 1;
     }
 
-    return i;
+    if (bit)
+        return out;
+    else
+        return 32 - out;
 }
 
 unsigned int swap_bytes(unsigned int n, unsigned int b0, unsigned int b1)
@@ -89,7 +85,7 @@ unsigned int swap_bytes(unsigned int n, unsigned int b0, unsigned int b1)
     unsigned int byte2{((n << (8)) >> 8 * 3) << 8 * 2};
     unsigned int byte3{(n >> 8 * 3) << 8 * 3};
 
-    for (unsigned int i{0}; i < 3; ++i)
+    for (unsigned int i{0}; i < 4; ++i)
     {
         if (b0 == i)
         {
@@ -148,7 +144,10 @@ unsigned int swap_bytes(unsigned int n, unsigned int b0, unsigned int b1)
 
 int main()
 {
-    std::cout << count(32, 0); // 100000
+    // Test Cases
 
-    return 0;
+    // swap_bytes
+    std::cout << 0b10110101100100000111111101011011 << " = " << swap_bytes(0b10110101010110110111111110010000, 0, 2) << std::endl;
+    std::cout << 0b00000100000000010000001000001000 << " = " << swap_bytes(0b00000100000010000000001000000001, 0, 2) << std::endl;
+    std::cout << 0b01111111010110111011010110010000 << " = " << swap_bytes(0b10110101010110110111111110010000, 3, 1) << std::endl;
 }
