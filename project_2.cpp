@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cassert>
-#include <climits>
 
 void pattern(unsigned int n)
 {
@@ -12,7 +11,7 @@ void pattern(unsigned int n)
         int num_of_asterisks = n * 2 + 1;
         bool dec = true;
 
-        for (int i{0}; i < n * 2 + 1; ++i)
+        for (unsigned int i{0}; i < n * 2 + 1; ++i)
         {
             // output
             std::cout << space;
@@ -45,7 +44,7 @@ unsigned int log10(unsigned int n)
     assert(n != 0);
 
     int m{0};
-    int pow{1};
+    unsigned int pow{1};
 
     while (pow <= n)
     {
@@ -82,25 +81,74 @@ unsigned int swap_bytes(unsigned int n, unsigned int b0, unsigned int b1)
     if (b0 == b1)
         return n;
 
-    unsigned int n_dup{n};
     unsigned int out{0};
-    int byte1[8]{};
-    int byte2[8]{};
-    int byte3[8]{};
-    int byte4[9]{};
 
-    for ()
+    // do stuff here
+    unsigned int byte0{(n << (8 * 3)) >> 8 * 3};
+    unsigned int byte1{((n << (8 * 2)) >> 8 * 3) << 8};
+    unsigned int byte2{((n << (8)) >> 8 * 3) << 8 * 2};
+    unsigned int byte3{(n >> 8 * 3) << 8 * 3};
 
-        return out;
+    for (unsigned int i{0}; i < 3; ++i)
+    {
+        if (b0 == i)
+        {
+            // make a new int with the replacement byte repositioned to the appropriate space
+            // |= on to the output
+            unsigned int replacement_byte{};
+            unsigned int replacement_byte1{};
+
+            if (b1 == 0)
+                replacement_byte = byte0;
+            else if (b1 == 1)
+                replacement_byte = byte1;
+            else if (b1 == 2)
+                replacement_byte = byte2;
+            else
+                replacement_byte = byte3;
+
+            if (i == 0)
+                replacement_byte1 = byte0;
+            else if (i == 1)
+                replacement_byte1 = byte1;
+            else if (i == 2)
+                replacement_byte1 = byte2;
+            else if (i == 3)
+                replacement_byte1 = byte3;
+
+            if (b1 < b0)
+            {
+                replacement_byte1 >>= 8 * (b0 - b1);
+                replacement_byte <<= 8 * (b0 - b1);
+            }
+            else
+            {
+                replacement_byte1 <<= 8 * (b1 - b0);
+                replacement_byte >>= 8 * (b1 - b0);
+            }
+
+            out |= replacement_byte;
+            out |= replacement_byte1;
+        }
+        else if (b1 != i)
+        {
+            if (i == 0)
+                out |= byte0;
+            else if (i == 1)
+                out |= byte1;
+            else if (i == 2)
+                out |= byte2;
+            else
+                out |= byte3;
+        }
+    }
+
+    return out;
 }
 
 int main()
 {
-    std::cout << log10(1200) << std::endl; // WORKS
-    pattern(3);                            // WORKS
-    std::cout << count(4, 0) << std::endl; // WORKS
-
-    swap_bytes(2, 1, 3);
+    std::cout << count(32, 0); // 100000
 
     return 0;
 }
