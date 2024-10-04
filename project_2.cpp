@@ -142,12 +142,87 @@ unsigned int swap_bytes(unsigned int n, unsigned int b0, unsigned int b1)
     return out;
 }
 
-int main()
+void test()
 {
     // Test Cases
 
+    // pattern
+
+    std::cout << "\n------------------ pattern() ------------------" << std::endl;
+
+    std::cout
+        << "\nTest case #1:\n";
+    std::cout << "Expected: \n*\n";
+    std::cout << "Your output: \n";
+    pattern(0);
+
+    std::cout << "\nTest case #2: \n";
+    std::cout << "Expected: \n*****\n *** \n  *  \n *** \n*****\n";
+    std::cout << "Your output: \n";
+    pattern(2);
+
+    std::cout << "\nTest case #3: \n";
+    std::cout << "Expected: \n***********************\n ********************* \n  *******************  \n   *****************    \n    ***************     \n     *************      \n      ***********       \n       *********        \n        *******         \n         *****          \n          ***           \n           *      \n          ***         \n         *****        \n        *******       \n       *********      \n      ***********     \n     *************     \n    ***************    \n   *****************   \n  *******************  \n ********************* \n***********************";
+    std::cout << "\nYour output: \n";
+    pattern(11);
+
+    // log19
+    std::cout << "\n------------------ log10() ------------------" << std::endl;
+    std::cout << "\nTest case #4:" << std::endl;
+    std::cout << "Expected: 2";
+    std::cout << "\nYour output: " << log10(280) << std::endl;
+
+    std::cout << "\nTest case #5:" << std::endl;
+    std::cout << "Expected: 9";
+    std::cout << "\nYour output: " << log10(2398479827) << std::endl;
+
+    std::cout << "\nTest case #6:" << std::endl;
+    std::cout << "Expected: 0";
+    std::cout << "\nYour output: " << log10(1) << std::endl;
+
+    // count
+    std::cout << "\n------------------ count() ------------------" << std::endl;
+
+    std::cout << "\nTest case #7:" << std::endl;
+    std::cout << "Expected: 31";
+    std::cout << "\nYour output: " << count(32, 0) << std::endl;
+
+    std::cout << "\nTest case #8:" << std::endl;
+    std::cout << "Expected: 32";
+    std::cout << "\nYour output: " << count(0, 0) << std::endl;
+
+    std::cout << "\nTest case #9:" << std::endl;
+    std::cout << "Expected: 16";
+    std::cout << "\nYour output: " << count(387298673, 1) << std::endl;
+
+    std::cout << "\nTest case #10:" << std::endl;
+    std::cout << "Expected: 26";
+    std::cout << "\nYour output: " << count(3972, 0) << std::endl;
+
+    std::cout << "\nTest case #11:" << std::endl;
+    std::cout << "Expected: 2";
+    std::cout << "\nYour output: " << count(5, 1) << std::endl;
+
     // swap_bytes
-    std::cout << 0b10110101100100000111111101011011 << " = " << swap_bytes(0b10110101010110110111111110010000, 0, 2) << std::endl;
-    std::cout << 0b00000100000000010000001000001000 << " = " << swap_bytes(0b00000100000010000000001000000001, 0, 2) << std::endl;
-    std::cout << 0b01111111010110111011010110010000 << " = " << swap_bytes(0b10110101010110110111111110010000, 3, 1) << std::endl;
+
+    std::cout << "\n------------------ count() ------------------" << std::endl;
+
+    std::cout << "\nTest case #12:" << std::endl;
+    std::cout << "Expected: " << 0b10110101100100000111111101011011;
+    std::cout << "\nYour output: " << swap_bytes(0b10110101010110110111111110010000, 0, 2) << std::endl;
+
+    std::cout << "\nTest case #13:" << std::endl;
+    std::cout << "Expected: " << 0b00000100000000010000001000001000;
+    std::cout << "\nYour output: " << swap_bytes(0b00000100000010000000001000000001, 0, 2) << std::endl;
+
+    std::cout << "\nTest case #14:" << std::endl;
+    std::cout << "Expected: " << 0b01111111010110111011010110010000;
+    std::cout << "\nYour output: " << swap_bytes(0b10110101010110110111111110010000, 3, 1) << std::endl;
+
+    std::cout << std::endl;
+}
+int main()
+{
+    test();
+    return 0;
 }
