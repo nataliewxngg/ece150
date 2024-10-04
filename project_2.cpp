@@ -144,8 +144,6 @@ unsigned int swap_bytes(unsigned int n, unsigned int b0, unsigned int b1)
 
 void test()
 {
-    // Test Cases
-
     // pattern
 
     std::cout << "\n------------------ pattern() ------------------" << std::endl;
@@ -221,6 +219,7 @@ void test()
 
     std::cout << std::endl;
 }
+
 int main()
 {
     test();
