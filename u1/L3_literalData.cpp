@@ -26,7 +26,7 @@ int main()
     std::cout
         << "The answer to the ultimate"
         << " question is "
-        << 42 << std::endl;
+        << +42 << std::endl;
 
     std::cout << "32 - 42 = "
               << -10 << std::endl;

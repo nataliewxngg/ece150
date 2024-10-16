@@ -15,7 +15,7 @@ int main()
     int arr1[10]{};
     int arr2[10]{};
 
-    // arr1 = arr2;
+    // arr1 = arr2; // doesn't work
 
     // 2. Const array values cannot be modified after assignment
     const int primes[10]{2, 3, 5, 7, 11, 13, 17, 19, 23, 25};

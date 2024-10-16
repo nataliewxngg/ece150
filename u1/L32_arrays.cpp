@@ -4,7 +4,10 @@ int main()
 {
     // Array Declarations
     // capacity MUST be included, but initial values are optional
-    std::string totatoYaklt[5]{"Natalie", "Abby"}; // array of 5 strings
+    std::string totatoYaklt[5]{
+        "Natalie",
+        "Abby",
+    }; // array of 5 strings
 
     for (int i{0}; i < 5; ++i)
     {
