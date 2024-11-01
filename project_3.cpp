@@ -46,13 +46,55 @@ double *cross_correlation(
 // Method #3
 std::size_t shift_duplicates(int array[], std::size_t capacity)
 {
-    std::size_t out{0};
+    std::size_t num_of_dupes{0};
 
-    for (std::size_t i{0}; i < capacity; ++i)
+    for (std::size_t i{0}; i < capacity - num_of_dupes; ++i)
     {
+        if (i != capacity - 1) // if the left pointer is not at the end of the array
+        {
+            for (std::size_t j{i + 1}; j < capacity; ++j)
+            {
+                if (array[i] == array[j])
+                {
+                    int dupe = array[i];
+
+                    // shift everything between i and j once to the left
+                    for (std::size_t m{i}; m < j - 1; ++m)
+                    {
+                        array[m] = array[m + 1];
+                    }
+
+                    // shift everything behind j twice to the left
+                    for (std::size_t n{j}; n < capacity - 1; ++n)
+                    {
+                        array[n - 1] = array[n + 1];
+                    }
+
+                    // add dupes to the end
+                    array[capacity - 1] = array[capacity - 2] = dupe;
+                    if (j < capacity - num_of_dupes) // duplicate not already identified
+                        num_of_dupes += 2;
+                    else
+                    {
+                        ++num_of_dupes;
+                        break; // j=capacity;
+                    }
+
+                    if (i < capacity - num_of_dupes)
+                        j = i; // start checking for new array[i] from beginning again
+                    else
+                        break;
+                }
+            }
+        }
     }
 
-    return out;
+    // for (std::size_t k{0}; k < capacity; ++k)
+    // {
+    //     std::cout << array[k] << std::endl;
+    // }
+
+    return capacity - num_of_dupes;
 }
 
 // Method #4
