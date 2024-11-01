@@ -1,6 +1,7 @@
 #include <iostream>
 
 // return locations of arrays = a "hack" to return arrays
+// int/double/... *array is another way of passing an array into a function
 
 int main();
 int main()
