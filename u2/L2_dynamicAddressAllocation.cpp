@@ -13,7 +13,7 @@ int main()
 
     // Unallocating memory to the program
     delete p_int;
-    p_int = nullptr; // resets the value stored in the once allocated memory to be null
+    p_int = nullptr; // forget this address
 
     return 0;
 }
