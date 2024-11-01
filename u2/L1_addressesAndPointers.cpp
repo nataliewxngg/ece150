@@ -29,7 +29,7 @@ int main()
     std::cout << *p_n << std::endl; // 3
 
     // std::size_t <- unsigned # that can store the maximum index for a particular processor (a universal solution to the varying types of indexes to arrays)
-    const std::size_t cap = 20;
+    std::size_t cap{20};
     int arr_b[cap];
 
     return 0;
