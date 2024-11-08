@@ -1,16 +1,6 @@
 #include <iostream>
 #include <cassert>
-
-bool is_sorted(int const arr[], std::size_t cap)
-{
-    for (std::size_t i{1}; i < cap; ++i)
-    {
-        if (arr[i] < arr[i - 1])
-            return 0;
-    }
-
-    return 1;
-}
+#include "L2_sortedArrays.cpp"
 
 // Binary search will have to inspect no more than log(n)+1 entries
 // whereas linear search may have to inspect up to n entries
