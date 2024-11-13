@@ -1,7 +1,8 @@
 #include <iostream>
 #include <cassert>
+#include "p_4_header.hpp"
 
-// Function 1
+// Function 2.1
 std::size_t length(char const *a)
 {
     std::size_t out{0};
@@ -10,7 +11,7 @@ std::size_t length(char const *a)
     return out;
 }
 
-// Function 2
+// Function 2.2
 int compare(char const *str1, char const *str2)
 {
     std::size_t index{0};
@@ -28,17 +29,17 @@ int compare(char const *str1, char const *str2)
         return 1;
 }
 
-// Function 3
+// Function 2.3
 void assign(char *str1, char const *str2)
 {
     // overwrite str1 with str2 (both length of 20 character excluding '\0')
-    for (std::size_t i{0}; i < 20; ++i)
+    for (std::size_t i{0}; i < 21 && str1[i] != '\0'; ++i)
     {
         str1[i] = str2[i];
     }
 }
 
-// Function 4
+// Function 2.4
 unsigned int distance(char const *str1, char const *str2)
 {
     // find "distance" between two strings (eg. "form and "from" is 2)
@@ -53,4 +54,44 @@ unsigned int distance(char const *str1, char const *str2)
         return 1 + distance(str1 + 1, str2 + 1);
     else
         return distance(str1 + 1, str2 + 1);
+}
+
+// Function 2.5
+std::size_t is_sorted(char *array[], std::size_t capacity)
+{
+    char prev = *array[0];
+    for (std::size_t i{1}; i < capacity; ++i)
+    {
+        if (*array[i] < prev)
+            return i;
+        prev = *array[i];
+    }
+    return capacity;
+}
+
+// Function 2.6
+void insert(char *array[], std::size_t capacity)
+{
+}
+
+// Function 2.7
+void insertion_sort(char *array[], std::size_t capacity)
+{
+}
+
+// Function 2.8
+std::size_t remove_duplicates(char *array[], std::size_t capacity)
+{
+    return 0;
+}
+
+// Function 2.9
+std::size_t find(char *array[], std::size_t capacity, char const *str)
+{
+    return 0;
+}
+
+// Function 2.11
+void free_word_array(char **word_array)
+{
 }

@@ -8,7 +8,7 @@ int main()
     char *s1{"natalie"};
     char *s2{"dog"};
     char *s3{"cat"};
-    char test_string[21]{"cotton"};
+    char test_string[21]{"cat"};
 
     std::cout << length(s1) << std::endl; // 7
 
