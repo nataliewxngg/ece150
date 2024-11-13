@@ -8,7 +8,7 @@ int main()
     char *s1{"natalie"};
     char *s2{"dog"};
     char *s3{"cat"};
-    char test_string[21]{"cat"};
+    char test_string[21]{"cotton"};
 
     std::cout << length(s1) << std::endl; // 7
 
@@ -16,7 +16,8 @@ int main()
     std::cout << compare(s3, s2) << std::endl; // -1
     std::cout << compare(s1, s1) << std::endl; // 0
 
-    assign(test_string, "bird");
+    std::cout << "The distance between " << test_string
+              << " and hat is " << distance(test_string, "hat") << std::endl;
 
     return 0;
 }

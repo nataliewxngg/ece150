@@ -37,3 +37,20 @@ void assign(char *str1, char const *str2)
         str1[i] = str2[i];
     }
 }
+
+// Function 4
+unsigned int distance(char const *str1, char const *str2)
+{
+    // find "distance" between two strings (eg. "form and "from" is 2)
+
+    // base cases
+    if (length(str1) == 0)
+        return length(str2);
+    else if (length(str2) == 0)
+        return length(str1);
+
+    if (str1[0] != str2[0])
+        return 1 + distance(str1 + 1, str2 + 1);
+    else
+        return distance(str1 + 1, str2 + 1);
+}
