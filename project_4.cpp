@@ -35,28 +35,5 @@ void assign(char *str1, char const *str2)
     for (std::size_t i{0}; i < 20; ++i)
     {
         str1[i] = str2[i];
-        std::cout << i << std::endl;
     }
-}
-
-int main();
-int main()
-{
-    char *s1{"natalie"};
-    char *s2{"dog"};
-    char *s3{"cat"};
-    char *s4{"i like jewelpet!!!!!"};
-    char *s5{"i have an iphone 15!"};
-
-    std::cout << length(s1) << std::endl; // 7
-
-    std::cout << compare(s2, s3) << std::endl; // 1
-    std::cout << compare(s3, s2) << std::endl; // -1
-    std::cout << compare(s1, s1) << std::endl; // 0
-
-    assign(s4, s5);
-    std::cout << s4 << std::endl;
-    std::cout << s5 << std::endl;
-
-    return 0;
 }
