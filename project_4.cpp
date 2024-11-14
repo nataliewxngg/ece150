@@ -77,6 +77,20 @@ std::size_t is_sorted(char *array[], std::size_t capacity)
 // Function 2.6
 void insert(char *array[], std::size_t capacity)
 {
+    char entry{*array[capacity - 1]};
+    std::size_t index;
+    for (std::size_t i{0}; i < (capacity - 1); ++i)
+    {
+        if (*array[i] > entry)
+        {
+            for (std::size_t j{capacity - 1}; j > i; --j)
+            {
+                *array[j] = *array[j - 1];
+            }
+            *array[i] = entry;
+            break;
+        }
+    }
 }
 
 // Function 2.7
