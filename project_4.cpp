@@ -29,7 +29,7 @@ int compare(char const *str1, char const *str2)
         return 1;
 }
 
-// Function 2.3
+// Function 2.3 ******************************************
 void assign(char *str1, char const *str2)
 {
     // overwrite str1 with str2 (both length of 20 character excluding '\0')
@@ -42,8 +42,6 @@ void assign(char *str1, char const *str2)
 // Function 2.4
 unsigned int distance(char const *str1, char const *str2)
 {
-    // find "distance" between two strings (eg. "form and "from" is 2)
-
     // base cases
     if (length(str1) == 0)
         return length(str2);
@@ -51,7 +49,14 @@ unsigned int distance(char const *str1, char const *str2)
         return length(str1);
 
     if (str1[0] != str2[0])
-        return 1 + distance(str1 + 1, str2 + 1);
+    {
+        if (length(str1) > length(str2))
+            return 1 + distance(str1 + 1, str2);
+        else if (length(str1) < length(str2))
+            return 1 + distance(str1, str2 + 1);
+        else
+            return 1 + distance(str1 + 1, str2 + 1);
+    }
     else
         return distance(str1 + 1, str2 + 1);
 }

@@ -17,7 +17,7 @@ int main()
     std::cout << compare(s1, s1) << std::endl; // 0
 
     std::cout << "The distance between " << test_string
-              << " and hat is " << distance(test_string, "hat") << std::endl;
+              << " and mat is " << distance(test_string, "mat") << std::endl;
 
     return 0;
 }
