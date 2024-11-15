@@ -100,7 +100,27 @@ void insertion_sort(char *array[], std::size_t capacity)
 // Function 2.8
 std::size_t remove_duplicates(char *array[], std::size_t capacity)
 {
-    return 0;
+    // array already sorted
+    std::size_t out{0};
+    for (std::size_t i{0}; i < capacity - 1; ++i)
+    {
+        if (compare(array[i], array[i + 1]) == 0)
+        { // same characters
+
+            // add 1
+            ++out;
+
+            // shift the characters (starting at i+2) to the left
+            for (std::size_t j{i + 2}; j < capacity; ++j)
+            {
+                array[j - 1] = array[j];
+            }
+
+            // set i = i-1;
+            --i;
+        }
+    }
+    return out;
 }
 
 // Function 2.9
