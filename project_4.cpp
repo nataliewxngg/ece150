@@ -83,7 +83,7 @@ int modified_compare(char *str1, char *str2)
 
 std::size_t is_sorted(char *array[], std::size_t capacity)
 {
-    char *prev = array[0];
+    char *prev{array[0]};
 
     for (std::size_t i{1}; i < capacity; ++i)
     {
@@ -97,20 +97,14 @@ std::size_t is_sorted(char *array[], std::size_t capacity)
 // Function 2.6
 void insert(char *array[], std::size_t capacity)
 {
-    char entry{*array[capacity - 1]};
+    char *entry{array[capacity - 1]};
+    std::size_t i{capacity - 1};
 
-    for (std::size_t i{0}; i < (capacity - 1); ++i)
+    for (i; compare(array[i - 1], entry) > 0; --i)
     {
-        if (*array[i] > entry)
-        {
-            for (std::size_t j{capacity - 1}; j > i; --j)
-            {
-                array[j] = array[j - 1];
-            }
-            *array[i] = entry;
-            break;
-        }
+        array[i] = array[i - 1];
     }
+    array[i] = entry;
 }
 
 // Function 2.7
