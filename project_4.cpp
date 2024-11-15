@@ -29,13 +29,15 @@ int compare(char const *str1, char const *str2)
         return 1;
 }
 
-// Function 2.3 ******************************************
+// Function 2.3
 void assign(char *str1, char const *str2)
 {
     // overwrite str1 with str2 (both length of 20 character excluding '\0')
-    for (std::size_t i{0}; i < 21 && str1[i] != '\0'; ++i)
+    for (std::size_t i{0}; i < 21; ++i)
     {
         str1[i] = str2[i];
+        if (str2[i] == '\0')
+            break;
     }
 }
 
