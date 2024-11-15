@@ -64,14 +64,32 @@ unsigned int distance(char const *str1, char const *str2)
 }
 
 // Function 2.5
+int modified_compare(char *str1, char *str2)
+{
+    std::size_t index{0};
+
+    while (str1[index] == str2[index]) // kth character is the same
+    {
+        if (str1[index] == '\0') // kth character of both strings is '\0'
+            return 0;
+
+        ++index;
+    }
+    if (str1[index] == '\0' || str1[index] < str2[index])
+        return -1;
+    else
+        return 1;
+}
+
 std::size_t is_sorted(char *array[], std::size_t capacity)
 {
-    char prev = *array[0];
+    char *prev = array[0];
+
     for (std::size_t i{1}; i < capacity; ++i)
     {
-        if (*array[i] < prev)
+        if (compare(array[i], prev) < 0)
             return i;
-        prev = *array[i];
+        prev = array[i];
     }
     return capacity;
 }
@@ -80,14 +98,14 @@ std::size_t is_sorted(char *array[], std::size_t capacity)
 void insert(char *array[], std::size_t capacity)
 {
     char entry{*array[capacity - 1]};
-    std::size_t index;
+
     for (std::size_t i{0}; i < (capacity - 1); ++i)
     {
         if (*array[i] > entry)
         {
             for (std::size_t j{capacity - 1}; j > i; --j)
             {
-                *array[j] = *array[j - 1];
+                array[j] = array[j - 1];
             }
             *array[i] = entry;
             break;

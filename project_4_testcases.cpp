@@ -19,5 +19,13 @@ int main()
     std::cout << "The distance between " << test_string
               << " and mat is " << distance(test_string, "mat") << std::endl;
 
+    std::cout << "cat is less than dog: " << (s3 < s2) << std::endl;
+    std::cout << "dog is less than cat: " << (s2 < s3) << std::endl;
+
+    char c[2]{'e', 'f'};
+    char oo = c[0];
+    c[0] = '2';
+    std::cout << oo << std::endl; // still 'e'
+
     return 0;
 }
