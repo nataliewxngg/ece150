@@ -126,7 +126,27 @@ std::size_t remove_duplicates(char *array[], std::size_t capacity)
 // Function 2.9
 std::size_t find(char *array[], std::size_t capacity, char const *str)
 {
-    return 0;
+    // found -> return  index of first occurrence
+    // not found -> return index of first entry w/ smallest distance
+
+    unsigned int smallest_distance{distance(array[0], str)};
+    unsigned int out;
+
+    for (std::size_t i{0}; i < capacity; ++i)
+    {
+        if (compare(array[0], str) == 0)
+            return i;
+        else
+        {
+            if (distance(array[i], str) < smallest_distance)
+            {
+                smallest_distance = distance(array[i], str);
+                out = i;
+            }
+        }
+    }
+
+    return out;
 }
 
 // Function 2.11
