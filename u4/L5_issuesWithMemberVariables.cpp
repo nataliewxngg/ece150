@@ -7,6 +7,8 @@ int main()
     // it is of best practice to "normalize" objects - so that data is consistent and not redundant
     // (so that objects with different parameters that are essentially the same are represented the same way)
 
+    // We also want to prevent users from accessing member variables but to use member functions instead (so that objects remain normalized and correct)
+
     // ------------------------------------------
 
     // To avoid problems (eg. wild pointers, null pointers, memory leaks),
