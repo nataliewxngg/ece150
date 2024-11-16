@@ -77,13 +77,13 @@ std::size_t is_sorted(char *array[], std::size_t capacity)
     return capacity;
 }
 
-// Function 2.6 **********************************************
+// Function 2.6
 void insert(char *array[], std::size_t capacity)
 {
     char *entry{array[capacity - 1]};
     std::size_t i{capacity - 1};
 
-    for (i; compare(array[i - 1], entry) > 0 && i > 0; --i)
+    for (i; i > 0 && compare(array[i - 1], entry) > 0; --i)
     {
         array[i] = array[i - 1];
     }

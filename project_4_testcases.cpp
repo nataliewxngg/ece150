@@ -8,7 +8,7 @@ int main()
     char *s1{"natalie"};
     char *s2{"dog"};
     char *s3{"cat"};
-    char *s4{"moose"};
+    char *s4{"zoo"};
     char *s5{"zebra"};
     char test_string[21]{"cat"};
 
