@@ -1,4 +1,6 @@
 #include <iostream>
+#include <string>
+using namespace std;
 
 int main();
 
@@ -11,9 +13,10 @@ public:
     double y_;
     double z_;
 };
+
 std::string to_string(Vector_3d &u)
 {
-    return "x: " + std::to_string(u.x_) + "\ny: " + std::to_string(u.y_) + "\nz: " + std::to_string(u.z_);
+    return "(" + std::to_string(u.x_) + ", " + std::to_string(u.y_) + ", " + std::to_string(u.z_) + ")";
 }
 
 // -------------------------------------
@@ -34,7 +37,7 @@ Vector_3d operator-(Vector_3d &v) // THIS FUNCTION IS CALLED WHEN -(VECTOR_3D OB
 // eg. std::cout << v;
 
 // std::cout is in class std::ostream
-std::ostream &operator<<(ostream &out, Vector_3d &u) // NOTION QUESTION???????????????????????????????????
+std::ostream &operator<<(ostream &out, Vector_3d &u)
 {
     out << "(" << u.x_ << ", " << u.y_ << ", " << u.z_ << ")";
     return out;
