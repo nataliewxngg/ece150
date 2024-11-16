@@ -77,13 +77,13 @@ std::size_t is_sorted(char *array[], std::size_t capacity)
     return capacity;
 }
 
-// Function 2.6
+// Function 2.6 **********************************************
 void insert(char *array[], std::size_t capacity)
 {
     char *entry{array[capacity - 1]};
     std::size_t i{capacity - 1};
 
-    for (i; compare(array[i - 1], entry) > 0; --i)
+    for (i; compare(array[i - 1], entry) > 0 && i > 0; --i)
     {
         array[i] = array[i - 1];
     }
@@ -152,4 +152,6 @@ std::size_t find(char *array[], std::size_t capacity, char const *str)
 // Function 2.11
 void free_word_array(char **word_array)
 {
+    delete[] word_array[0];
+    delete[] word_array;
 }

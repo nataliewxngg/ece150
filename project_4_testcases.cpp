@@ -8,6 +8,8 @@ int main()
     char *s1{"natalie"};
     char *s2{"dog"};
     char *s3{"cat"};
+    char *s4{"moose"};
+    char *s5{"zebra"};
     char test_string[21]{"cat"};
 
     std::cout << length(s1) << std::endl; // 7
@@ -26,6 +28,18 @@ int main()
     char oo = c[0];
     c[0] = '2';
     std::cout << oo << std::endl; // still 'e'
+
+    char *array[5]{
+        s3,
+        s2,
+        s1,
+        s5,
+        s4};
+    insert(array, 5);
+    for (int i{0}; i < 5; ++i)
+    {
+        std::cout << array[i] << std::endl;
+    }
 
     return 0;
 }
