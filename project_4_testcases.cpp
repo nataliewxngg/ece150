@@ -30,12 +30,12 @@ int main()
     std::cout << oo << std::endl; // still 'e'
 
     char *array[5]{
-        s3,
-        s2,
         s1,
+        s3,
         s5,
-        s4};
-    insert(array, 5);
+        s1,
+        s2};
+    insertion_sort(array, 5);
     for (int i{0}; i < 5; ++i)
     {
         std::cout << array[i] << std::endl;
