@@ -5,11 +5,11 @@
 int main();
 int main()
 {
-    char *s1{"natalie"};
-    char *s2{"dog"};
-    char *s3{"cat"};
-    char *s4{"zoo"};
-    char *s5{"zebra"};
+    char s1[21]{"natalie"};
+    char s2[21]{"natalie"};
+    char s3[21]{"cat"};
+    char s4[21]{"zoo"};
+    char s5[21]{"zebra"};
     char test_string[21]{"cat"};
 
     std::cout << length(s1) << std::endl; // 7
@@ -29,14 +29,19 @@ int main()
     c[0] = '2';
     std::cout << oo << std::endl; // still 'e'
 
-    char *array[5]{
-        s1,
+    char *array[4]{
         s3,
+        s2,
         s5,
-        s1,
-        s2};
-    insertion_sort(array, 5);
-    for (int i{0}; i < 5; ++i)
+        s1
+        // s2
+    };
+    for (int i{0}; i < 4; ++i)
+    {
+        std::cout << array[i] << std::endl;
+    }
+    insertion_sort(array, 4);
+    for (int i{0}; i < 4; ++i)
     {
         std::cout << array[i] << std::endl;
     }
