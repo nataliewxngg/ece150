@@ -63,6 +63,10 @@ int main()
 
     // ************************
     // RULE
+    // if printing a var/array entry produces an address, then use the ARROW OPERATOR ->
+    // otherwise, use the dot operator .
+
+    // and you must call delete on any p_name variables (assuming all pointers follow the naming convention)
 
     return 0;
 }
