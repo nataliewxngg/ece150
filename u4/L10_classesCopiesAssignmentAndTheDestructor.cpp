@@ -40,6 +40,8 @@ int main()
     p3 = f(p3);
     std::cout << p3 << std::endl; // (4,5)
 
+    // p1 and p2 remains unchanged
+
     return 0;
 }
 
