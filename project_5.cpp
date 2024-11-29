@@ -165,10 +165,12 @@ Set::~Set()
 }
 
 // Copy constructor
-Set::Set(Set const &orig)
+Set::Set(Set const &orig) : p_head_{nullptr}
 {
   for (Node *ptr{orig.p_head_}; ptr != nullptr; ptr = ptr->next())
-    p_head_ = new Node{ptr->value(), p_head_};
+  {
+    insert(ptr->value());
+  }
 }
 
 // Move constructor
@@ -335,45 +337,77 @@ std::size_t Set::merge(Set &other)
 //////////////////////
 Set &Set::operator|=(Set const &other)
 {
+  for (Node *ptr{other.p_head_}; ptr != nullptr; ptr = ptr->next())
+    p_head_ = new Node{ptr->value(), p_head_};
+
   return *this;
 }
 
 Set &Set::operator&=(Set const &other)
 {
+  for (Node *ptr{p_head_}; ptr != nullptr; ptr = ptr->next())
+  {
+    if (other.find(ptr->value()) == nullptr)
+    {
+      erase(ptr->value());
+    }
+  }
+
   return *this;
 }
 
 Set &Set::operator^=(Set const &other)
 {
+  for (Node *ptr{other.p_head_}; ptr != nullptr; ptr = ptr->next())
+  {
+    if (find(ptr->value()) != nullptr)
+    {
+      erase(ptr->value());
+    }
+    else
+    {
+      insert(ptr->value()); // might cause a problem
+    }
+  }
+
   return *this;
 }
 
 Set &Set::operator-=(Set const &other)
 {
+  for (Node *ptr{other.p_head_}; ptr != nullptr; ptr = ptr->next())
+  {
+    erase(ptr->value());
+  }
+
   return *this;
 }
 
 Set Set::operator|(Set const &other) const
 {
   Set result{};
+  result |= other;
   return result;
 }
 
 Set Set::operator&(Set const &other) const
 {
   Set result{};
+  result &= other;
   return result;
 }
 
 Set Set::operator^(Set const &other) const
 {
   Set result{};
+  result ^= other;
   return result;
 }
 
 Set Set::operator-(Set const &other) const
 {
   Set result{};
+  result -= other;
   return result;
 }
 

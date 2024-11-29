@@ -76,8 +76,9 @@ int main()
   D = nullptr;
 
   // Set operations
-  std::cout << std::endl
-            << "--- Set Operations ---" << std::endl;
+  std::cout
+      << std::endl
+      << "--- Set Operations ---" << std::endl;
   std::cout << "A union B: " << (A | B) << std::endl;
   std::cout << "A intersect B: " << (A & B) << std::endl;
   std::cout << "Symmetric difference of A and B: " << (A ^ B) << std::endl;
