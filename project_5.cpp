@@ -168,9 +168,7 @@ Set::~Set()
 Set::Set(Set const &orig)
 {
   for (Node *ptr{orig.p_head_}; ptr != nullptr; ptr = ptr->next())
-  {
-    insert(ptr->value());
-  }
+    p_head_ = new Node{ptr->value(), p_head_};
 }
 
 // Move constructor
