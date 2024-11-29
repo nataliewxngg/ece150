@@ -133,18 +133,18 @@ private:
 ///////////////////////////////
 
 // Node constructor
-Node::Node(int new_value, Node *new_next)
+Node::Node(int new_value, Node *new_next) : value_{new_value}, next_{new_next}
 {
 }
 
 int Node::value() const
 {
-  return 0;
+  return value_;
 }
 
 Node *Node::next() const
 {
-  return nullptr;
+  return next_;
 }
 
 ///////////////////////////////
@@ -155,19 +155,22 @@ Node *Node::next() const
 Set::Set(std::initializer_list<int> initial_values) : p_head_{nullptr}
 {
   for (int const &value : initial_values)
-  {
     insert(value);
-  }
 }
 
 // Destructor
 Set::~Set()
 {
+  clear();
 }
 
 // Copy constructor
 Set::Set(Set const &orig)
 {
+  for (Node *ptr{orig.p_head_}; ptr != nullptr; ptr = ptr->next())
+  {
+    insert(ptr->value());
+  }
 }
 
 // Move constructor
@@ -197,11 +200,8 @@ bool Set::empty() const
 size_t Set::size() const
 {
   size_t out{0};
-
-  for (Node *p_node{p_head_}; p_node != nullptr; p_node = p_node->next_)
-  {
+  for (Node *p_node{p_head_}; p_node != nullptr; p_node = p_node->next())
     ++out;
-  }
 
   return out;
 }
@@ -209,14 +209,21 @@ size_t Set::size() const
 // Clear
 void Set::clear()
 {
+  while (!empty())
+  {
+    Node *p_del{p_head_};
+    p_head_ = p_head_->next();
+    delete p_del;
+    p_del = nullptr;
+  }
 }
 
 // Find
 Node *Set::find(int const &item) const
 {
-  for (Node *p_node{p_head_}; p_node != nullptr; p_node = p_node->next_)
+  for (Node *p_node{p_head_}; p_node != nullptr; p_node = p_node->next())
   {
-    if (p_node->value_ == item)
+    if (p_node->value() == item)
       return p_node;
   }
 
