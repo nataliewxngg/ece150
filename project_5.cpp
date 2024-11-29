@@ -308,7 +308,26 @@ std::size_t Set::erase(int const &item)
 std::size_t Set::merge(Set &other)
 {
   std::size_t count{0};
-  return 0;
+  Node *prev{nullptr};
+
+  for (Node *ptr{other.p_head_}; ptr != nullptr; ptr = ptr->next())
+  {
+    if (find(ptr->value()) == nullptr)
+    {
+      // set previous node to point to next (instead of current) node
+      if (prev != nullptr)
+      {
+        prev->next_ = ptr->next();
+      }
+
+      // move ptr into 'this' (push front)
+      ptr->next_ = p_head_;
+
+      ++count;
+    }
+  }
+
+  return count;
 }
 
 //////////////////////
