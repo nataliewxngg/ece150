@@ -176,17 +176,30 @@ Set::Set(Set const &orig)
 // Move constructor
 Set::Set(Set &&orig)
 {
+  std::swap(p_head_, orig.p_head_);
 }
 
 // Copy assignment
 Set &Set::operator=(Set const &orig)
 {
+  if (this == &orig)
+    return *this;
+  else
+  {
+    clear();
+    for (Node *ptr{orig.p_head_}; ptr != nullptr; ptr = ptr->next())
+    {
+      insert(ptr->value());
+    }
+  }
+
   return *this;
 }
 
 // Move assignment
 Set &Set::operator=(Set &&orig)
 {
+  std::swap(p_head_, orig.p_head_);
   return *this;
 }
 
@@ -237,7 +250,7 @@ std::size_t Set::insert(int const &item)
   {
     p_head_ = new Node{item, p_head_};
 
-    return 1; // return # of items inserted into the set ??????????????????????????????????????????
+    return 1;
   }
 
   return 0;
@@ -248,13 +261,45 @@ std::size_t Set::insert(int const array[],
                         std::size_t const begin,
                         std::size_t const end)
 {
-  return 0;
+  int out{0};
+  for (std::size_t i{begin}; i < end; ++i)
+    out += insert(array[i]);
+
+  return out;
 }
 
 // Remove the item from the set and
 // return the number of items removed.
 std::size_t Set::erase(int const &item)
 {
+  Node *prev = nullptr;
+
+  for (Node *ptr{p_head_}; ptr != nullptr; ptr = ptr->next())
+  {
+    if (ptr->value() == item)
+    {
+      if (prev == nullptr)
+      {
+        // pop head
+        Node *p_del{p_head_};
+        p_head_ = p_head_->next();
+        delete p_del;
+        p_del = nullptr;
+      }
+
+      else
+      {
+        // pop elsewhere
+        prev->next_ = ptr->next();
+        delete ptr;
+        ptr = nullptr;
+      }
+      return 1;
+    }
+
+    prev = ptr;
+  }
+
   return 0;
 }
 
