@@ -417,32 +417,51 @@ Set Set::operator-(Set const &other) const
 // also in this set.
 bool Set::operator>=(Set const &other) const
 {
-  return false;
+  for (Node *ptr{other.p_head_}; ptr != nullptr; ptr = ptr->next())
+  {
+    if (find(ptr->value()) == nullptr)
+      return false;
+  }
+
+  return true;
 }
 
 bool Set::operator<=(Set const &other) const
 {
+  if (*this >= other)
+  {
+    // return true iff not equal
+    std::size_t size_of_this{0};
+    std::size_t size_of_other{0};
+
+    for (Node *ptr{p_head_}; ptr != nullptr; ptr = ptr->next())
+      ++size_of_this;
+    for (Node *ptr{other.p_head_}; ptr != nullptr; ptr = ptr->next())
+      ++size_of_other;
+
+    return size_of_this == size_of_other;
+  }
   return false;
 }
 
 bool Set::operator>(Set const &other) const
 {
-  return false;
+  return other >= *this;
 }
 
 bool Set::operator<(Set const &other) const
 {
-  return false;
+  return other > *this;
 }
 
 bool Set::operator==(Set const &other) const
 {
-  return false;
+  return other >= *this && *this >= other;
 }
 
 bool Set::operator!=(Set const &other) const
 {
-  return false;
+  return !(*this == other);
 }
 
 ////////////////////////////////////////////
