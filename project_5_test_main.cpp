@@ -75,6 +75,24 @@ int main()
   delete D;
   D = nullptr;
 
+  // --------------------------------------------------
+
+  Set Z{1, 2, 3};
+
+  std::cout
+      << std::endl
+      << "--- merge ---" << std::endl;
+  std::cout << "merge A and B: " << A.merge(B) << std::endl; // 1
+  std::cout << "A after merge: " << A << std::endl;          // {4,3,2,1}
+
+  B.insert(4);
+  std::cout << B << std::endl;
+
+  std::cout << "merge Z and B: " << (Z).merge(B) << std::endl; // 1
+  std::cout << "Z after merge: " << Z << std::endl;            // {4,1,2,3}
+
+  // --------------------------------------------------
+
   // Set operations
   std::cout
       << std::endl
