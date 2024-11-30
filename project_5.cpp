@@ -174,7 +174,7 @@ Set::Set(Set const &orig) : p_head_{nullptr}
 }
 
 // Move constructor
-Set::Set(Set &&orig)
+Set::Set(Set &&orig) : p_head_{nullptr}
 {
   std::swap(p_head_, orig.p_head_);
 }
