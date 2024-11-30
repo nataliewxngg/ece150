@@ -338,18 +338,39 @@ std::size_t Set::merge(Set &other)
 Set &Set::operator|=(Set const &other)
 {
   for (Node *ptr{other.p_head_}; ptr != nullptr; ptr = ptr->next())
-    p_head_ = new Node{ptr->value(), p_head_};
+  {
+    insert(ptr->value());
+  }
 
   return *this;
 }
 
 Set &Set::operator&=(Set const &other)
 {
-  for (Node *ptr{p_head_}; ptr != nullptr; ptr = ptr->next())
+  std::size_t size{0};
+  for (Node *ptr{other.p_head_}; ptr != nullptr; ptr = ptr->next())
   {
-    if (other.find(ptr->value()) == nullptr)
+    ++size;
+  }
+
+  if (size == 0)
+    clear();
+  else
+  {
+    while (other.find(p_head_->value()) == nullptr)
     {
-      erase(ptr->value());
+      erase(p_head_->value());
+    }
+
+    Node *p_prev{nullptr};
+    for (Node *ptr{p_head_}; ptr != nullptr; ptr = ptr->next())
+    {
+      if (other.find(ptr->value()) == nullptr)
+      {
+        erase(ptr->value());
+        ptr = p_prev;
+      }
+      p_prev = ptr;
     }
   }
 
@@ -366,7 +387,7 @@ Set &Set::operator^=(Set const &other)
     }
     else
     {
-      insert(ptr->value()); // might cause a problem
+      insert(ptr->value());
     }
   }
 
@@ -385,28 +406,28 @@ Set &Set::operator-=(Set const &other)
 
 Set Set::operator|(Set const &other) const
 {
-  Set result{};
+  Set result{*this};
   result |= other;
   return result;
 }
 
 Set Set::operator&(Set const &other) const
 {
-  Set result{};
+  Set result{*this};
   result &= other;
   return result;
 }
 
 Set Set::operator^(Set const &other) const
 {
-  Set result{};
+  Set result{*this};
   result ^= other;
   return result;
 }
 
 Set Set::operator-(Set const &other) const
 {
-  Set result{};
+  Set result{*this};
   result -= other;
   return result;
 }
@@ -428,6 +449,11 @@ bool Set::operator>=(Set const &other) const
 
 bool Set::operator<=(Set const &other) const
 {
+  return other >= *this;
+}
+
+bool Set::operator>(Set const &other) const
+{
   if (*this >= other)
   {
     // return true iff not equal
@@ -439,14 +465,9 @@ bool Set::operator<=(Set const &other) const
     for (Node *ptr{other.p_head_}; ptr != nullptr; ptr = ptr->next())
       ++size_of_other;
 
-    return size_of_this == size_of_other;
+    return size_of_this != size_of_other;
   }
   return false;
-}
-
-bool Set::operator>(Set const &other) const
-{
-  return other >= *this;
 }
 
 bool Set::operator<(Set const &other) const
