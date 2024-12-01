@@ -333,6 +333,7 @@ std::size_t Set::merge(Set &other)
       prev->next_ = ptr->next();
       // move ptr into 'this' (push front)
       ptr->next_ = p_head_;
+      p_head_ = ptr;
 
       ptr = prev;
       ++count;
