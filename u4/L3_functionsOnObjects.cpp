@@ -29,8 +29,7 @@ public:
 // Functions on Objects (examples)
 // *** recall pass by reference is used to avoid copying large objects
 
-double
-inner_product(Vector_3d const &u, Vector_3d const &v);
+double inner_product(Vector_3d const &u, Vector_3d const &v);
 double norm(Vector_3d const &u);
 bool equal(Vector_3d const &u, Vector_3d const &v);
 

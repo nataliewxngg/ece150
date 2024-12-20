@@ -7,7 +7,7 @@ class G
 {
 public:
     G(int n);
-    G(G const &original);
+    G(G const &original); // copy constructor
     ~G();
     int retrieve() const;
 

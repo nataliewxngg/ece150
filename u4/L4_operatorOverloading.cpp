@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-using namespace std;
+// using namespace std;
 
 int main();
 
@@ -37,7 +37,7 @@ Vector_3d operator-(Vector_3d &v) // THIS FUNCTION IS CALLED WHEN -(VECTOR_3D OB
 // eg. std::cout << v;
 
 // std::cout is in class std::ostream
-std::ostream &operator<<(ostream &out, Vector_3d &u)
+std::ostream &operator<<(std::ostream &out, Vector_3d &u)
 {
     out << "(" << u.x_ << ", " << u.y_ << ", " << u.z_ << ")";
     return out;

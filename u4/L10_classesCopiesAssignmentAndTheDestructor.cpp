@@ -14,6 +14,7 @@ public:
 private:
     int first_;
     int second_;
+    int third_;
     friend std::ostream &operator<<(std::ostream &out, Pair const &p);
 };
 
