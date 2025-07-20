@@ -42,7 +42,7 @@ int main()
     {
         std::cout << n_must_be_pos(5) << std::endl;
         std::cout << n_must_be_pos(-1) << std::endl;
-        std::cout << n_must_be_pos(3) << std::endl; // this will never execute since line 44 results results in an exception catch
+        std::cout << n_must_be_pos(3) << std::endl; // this will never execute since line 44 results in an exception catch
     }
     catch (std::domain_error &e)
     {

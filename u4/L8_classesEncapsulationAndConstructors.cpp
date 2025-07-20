@@ -48,7 +48,7 @@ Rational::Rational() : numer_{0}, // constructor: no return type, same name as c
     // constructor definition
 }
 
-// lines 18-22 is same as...
+// lines 45-49 are same as...
 // Rational::Rational()
 // {
 //     numer_ = 0;
