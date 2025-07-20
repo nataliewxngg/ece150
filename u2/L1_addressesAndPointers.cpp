@@ -18,7 +18,7 @@ int main()
 
     // These two are the same
     std::cout << arr_a << std::endl;
-    std::cout << arr_a << std::endl;
+    std::cout << &arr_a[0] << std::endl;
 
     // Accessing and modifying the variable stored in a pointer:
     int n{2};

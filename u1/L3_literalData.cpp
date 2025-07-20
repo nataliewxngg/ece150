@@ -170,7 +170,7 @@ int main()
 
     std::cout
         << "Both large and small"
-        << " nubmers are printed in"
+        << " numbers are printed in"
         << " scientific notation"
         << std::endl;
     std::cout

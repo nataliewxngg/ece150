@@ -20,7 +20,7 @@ int main();
 int main()
 {
     std::size_t cap{100};
-    double *array{new double[cap]};
+    double *array{new double[cap]{}};
     std::cout << array[15] << std::endl;
 
     return 0;

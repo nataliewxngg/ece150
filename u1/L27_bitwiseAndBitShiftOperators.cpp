@@ -17,7 +17,7 @@ int main()
     std::cout << "a ^ b = " << (a ^ b) << std::endl; // 10000100 <- -124
 
     // Automatic bitwise assignment operators
-    a %= b;
+    a &= b;
     a |= b;
     a ^= b;
 
